@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CategoriesCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
+final class CategoriesCollectionView: UICollectionView, UICollectionViewDataSource {
     
     private var productList: [CategoryCellCollectionViewCell.ViewModel] = []
     

@@ -83,6 +83,6 @@ extension CategoryCellCollectionViewCell {
     func configure(viewModel: ViewModel) {
         imageView.image = viewModel.image
         nameOfCategory.text = viewModel.title
-        numberOfGoods.text = viewModel.subtitle + "товаров"
+        numberOfGoods.text = viewModel.subtitle + " товаров"
     }
 }
