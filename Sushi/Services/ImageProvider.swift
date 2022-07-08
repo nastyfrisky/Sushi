@@ -14,12 +14,19 @@ protocol ImageProviderProtocol {
 }
 
 final class ImageProviderUrl: ImageProviderProtocol {
+    
+    // MARK: - Private Properties
+    
     private let url: URL
     private var completionBlock: ImageCompletion?
-
+    
+    // MARK: - Initializers
+    
     init(url: URL) {
         self.url = url
     }
+    
+    // MARK: - Public Methods
 
     func load(completion: @escaping ImageCompletion) {
         completionBlock = completion
@@ -28,6 +35,8 @@ final class ImageProviderUrl: ImageProviderProtocol {
             self.startLoading()
         }
     }
+    
+    // MARK: - Private Methods
 
     private func startLoading() {
         let data = try? Data(contentsOf: url)

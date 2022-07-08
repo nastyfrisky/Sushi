@@ -83,6 +83,8 @@ final class CategoryCellCollectionViewCell: UICollectionViewCell {
     }
 }
 
+// MARK: - CategoryCellCollectionViewCell extension
+
 extension CategoryCellCollectionViewCell {
     
     struct ViewModel {

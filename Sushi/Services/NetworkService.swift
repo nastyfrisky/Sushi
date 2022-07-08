@@ -13,8 +13,12 @@ final class NetworkService {
         case noData
     }
     
+    // MARK: - Private Properties
+    
     private let urlSession = URLSession.shared
     private let host = "vkus-sovet.ru"
+    
+    // MARK: - Public Methods
     
     func loadCategories(completion: @escaping (Result<[Category], LoadingError>) -> Void) {
         guard let url = apiUrl(for: "getMenu") else { return }
@@ -43,6 +47,8 @@ final class NetworkService {
     func makeImageURL(_ shortURL: String) -> URL? {
         imageUrl(for: shortURL)
     }
+    
+    // MARK: - Private Methods
     
     private func executeTask<T: Decodable>(
         request: URLRequest,
@@ -78,6 +84,8 @@ final class NetworkService {
         URL(string: "https://\(host)\(image)")
     }
 }
+
+// MARK: - Dictionary extension
 
 private extension Dictionary {
     func percentEncoded() -> Data? {

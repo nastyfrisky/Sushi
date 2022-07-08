@@ -124,6 +124,8 @@ final class DishesCollectionViewCell: UICollectionViewCell {
     }
 }
 
+// MARK: - DishesCollectionViewCell extension
+
 extension DishesCollectionViewCell {
     
     struct ViewModel {
