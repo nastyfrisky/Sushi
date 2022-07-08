@@ -9,6 +9,8 @@ import UIKit
 
 final class ProductListViewController: UIViewController {
     
+    // MARK: - Private Properties
+    
     private let headerView = HeaderView()
     private let categoriesCollectionView = CategoriesCollectionView()
     private let dishesCollectionView = DishesCollectionView()
@@ -70,6 +72,8 @@ final class ProductListViewController: UIViewController {
         ),
     ]
     
+    // MARK: - Override Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.greyColor
@@ -81,8 +85,10 @@ final class ProductListViewController: UIViewController {
         categoriesCollectionView.configureCategoryList(productList: productList)
         dishesCollectionView.configureDishList(dishList: dishList)
         
-        
+        categoryLabel.text = ""
     }
+    
+    // MARK: - Private Methods
     
     private func addSubviews() {
         view.addSubview(headerView)
@@ -96,7 +102,7 @@ final class ProductListViewController: UIViewController {
         dishesCollectionView.backgroundColor = .clear
         
         categoryLabel.textColor = .white
-        categoryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 35.0)
+        categoryLabel.font = Constants.fontBold35
     }
     
     private func setupConstraints() {
@@ -131,6 +137,8 @@ final class ProductListViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension ProductListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

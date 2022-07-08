@@ -9,6 +9,8 @@ import UIKit
 
 final class TabbarController: UITabBarController {
     
+    // MARK: - Override Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.greyColor
@@ -18,6 +20,8 @@ final class TabbarController: UITabBarController {
         
         addTabs()
     }
+    
+    // MARK: - Private Methods
     
     private func setupVC(vc: UIViewController, imageName: String) {
         let icon = UITabBarItem(

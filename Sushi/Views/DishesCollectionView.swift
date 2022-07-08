@@ -9,7 +9,11 @@ import UIKit
 
 final class DishesCollectionView: UICollectionView, UICollectionViewDataSource {
     
+    // MARK: - Private Properties
+    
     private var dishList: [DishesCollectionViewCell.ViewModel] = []
+    
+    // MARK: - Initializers
     
     init() {
         super.init(frame: .zero, collectionViewLayout: DishesCollectionView.createLayout())
@@ -21,6 +25,8 @@ final class DishesCollectionView: UICollectionView, UICollectionViewDataSource {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public Methods
     
     static func createLayout() -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()

@@ -8,8 +8,13 @@
 import UIKit
 
 final class HeaderView: UIView {
+    
+    // MARK: - Private Properties
+    
     private let imageView = UIImageView()
     private let button = UIButton()
+    
+    // MARK: - Initializers
     
     init() {
         super.init(frame: .zero)
@@ -22,6 +27,8 @@ final class HeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func addSubviews() {
         imageView.image = UIImage(named: "logo")

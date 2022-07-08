@@ -9,9 +9,13 @@ import UIKit
 
 final class CategoryCellCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Private Properties
+    
     private let imageView = UIImageView()
     private let nameOfCategory = UILabel()
     private let numberOfGoods = UILabel()
+    
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +30,8 @@ final class CategoryCellCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Methods
+    
     private func addSubviews() {
         addSubview(imageView)
         addSubview(nameOfCategory)
@@ -33,8 +39,8 @@ final class CategoryCellCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSubviews() {
-        nameOfCategory.font = UIFont(name: "HelveticaNeue-Bold", size: 15.0)
-        numberOfGoods.font = UIFont(name: "HelveticaNeue", size: 13.0)
+        nameOfCategory.font = Constants.fontBold15
+        numberOfGoods.font = Constants.font13
         
         nameOfCategory.textColor = .white
         numberOfGoods.textColor = .lightGray

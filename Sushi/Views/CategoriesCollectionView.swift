@@ -9,7 +9,11 @@ import UIKit
 
 final class CategoriesCollectionView: UICollectionView, UICollectionViewDataSource {
     
+    // MARK: - Private Properties
+    
     private var productList: [CategoryCellCollectionViewCell.ViewModel] = []
+    
+    // MARK: - Initializers
     
     init() {
         super.init(frame: .zero, collectionViewLayout: CategoriesCollectionView.createLayout())
@@ -21,6 +25,8 @@ final class CategoriesCollectionView: UICollectionView, UICollectionViewDataSour
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public Methods
     
     static func createLayout() -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()

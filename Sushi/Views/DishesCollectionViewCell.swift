@@ -9,6 +9,8 @@ import UIKit
 
 final class DishesCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Private Properties
+    
     private let imageView = UIImageView()
     private let dishName = UILabel()
     private let compositionOfTheDish = UILabel()
@@ -17,8 +19,7 @@ final class DishesCollectionViewCell: UICollectionViewCell {
     private let view = UIView()
     private let button = UIButton()
     
-    private let fontBold15 = UIFont(name: "HelveticaNeue-Bold", size: 15.0)
-    private let font13 = UIFont(name: "HelveticaNeue", size: 13.0)
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +33,8 @@ final class DishesCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Methods
+    
     private func addSubviews() {
         view.addSubview(dishName)
         view.addSubview(compositionOfTheDish)
@@ -44,17 +47,17 @@ final class DishesCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSubviews() {
-        dishName.font = fontBold15
+        dishName.font = Constants.fontBold15
         dishName.textColor = .white
         
-        compositionOfTheDish.font = font13
+        compositionOfTheDish.font = Constants.font13
         compositionOfTheDish.textColor = .lightGray
         compositionOfTheDish.numberOfLines = 0
         compositionOfTheDish.textAlignment = .center
         compositionOfTheDish.lineBreakStrategy = .hangulWordPriority
         
         button.backgroundColor = Constants.violetColor
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 15.0)
+        button.titleLabel?.font = Constants.font15
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.setTitle("В корзину", for: .normal)
@@ -76,8 +79,8 @@ final class DishesCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             compositionOfTheDish.topAnchor.constraint(equalTo: dishName.bottomAnchor, constant: 5),
-            compositionOfTheDish.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            compositionOfTheDish.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+            compositionOfTheDish.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            compositionOfTheDish.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -132,7 +135,7 @@ extension DishesCollectionViewCell {
         compositionOfTheDish.text = viewModel.subtitle
         spicyImage.image = viewModel.spicyImage
         
-        guard let fontPrice = fontBold15, let fontWeight = font13 else { return }
+        guard let fontPrice = Constants.fontBold15, let fontWeight = Constants.font13 else { return }
         
         let attributesPrice: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.white,
