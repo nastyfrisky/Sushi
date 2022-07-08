@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O5Q-6j-gK0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tabbar Controller-->
+        <scene sceneID="B5l-9X-CED">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LeN-8J-qhf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="O5Q-6j-gK0" customClass="TabbarController" customModule="Sushi" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hdJ-R9-R8w">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tabBar>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+</document>
