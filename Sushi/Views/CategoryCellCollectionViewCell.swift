@@ -11,7 +11,7 @@ final class CategoryCellCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Properties
     
-    private let imageView = UIImageView()
+    private let imageView = ImageView()
     private let nameOfCategory = UILabel()
     private let numberOfGoods = UILabel()
     
@@ -45,6 +45,10 @@ final class CategoryCellCollectionViewCell: UICollectionViewCell {
         nameOfCategory.textColor = .white
         numberOfGoods.textColor = .lightGray
         
+        nameOfCategory.adjustsFontSizeToFitWidth = true
+        nameOfCategory.lineBreakMode = .byClipping
+        nameOfCategory.textAlignment = .center
+        
         let view = UIView(frame: bounds)
         view.backgroundColor = Constants.violetColor
         selectedBackgroundView = view
@@ -67,7 +71,8 @@ final class CategoryCellCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             nameOfCategory.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameOfCategory.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10)
+            nameOfCategory.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            nameOfCategory.widthAnchor.constraint(equalTo: widthAnchor, constant: -5)
         ])
         
         NSLayoutConstraint.activate([
@@ -81,13 +86,13 @@ final class CategoryCellCollectionViewCell: UICollectionViewCell {
 extension CategoryCellCollectionViewCell {
     
     struct ViewModel {
-        let image: UIImage?
+        let imageProvider: ImageProviderProtocol?
         let title: String
         let subtitle: String
     }
     
     func configure(viewModel: ViewModel) {
-        imageView.image = viewModel.image
+        imageView.provider = viewModel.imageProvider
         nameOfCategory.text = viewModel.title
         numberOfGoods.text = viewModel.subtitle + " товаров"
     }

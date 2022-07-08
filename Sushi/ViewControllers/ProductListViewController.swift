@@ -11,66 +11,15 @@ final class ProductListViewController: UIViewController {
     
     // MARK: - Private Properties
     
+    private let networkService = NetworkService()
+    
     private let headerView = HeaderView()
     private let categoriesCollectionView = CategoriesCollectionView()
     private let dishesCollectionView = DishesCollectionView()
     private let categoryLabel = UILabel()
-    private let productList: [CategoryCellCollectionViewCell.ViewModel] = [
-        .init(image: UIImage(named: "susi"), title: "Суси", subtitle: "14"),
-        .init(image: UIImage(named: "susi"), title: "Роллы", subtitle: "7"),
-        .init(image: UIImage(named: "susi"), title: "Гунканы", subtitle: "30"),
-        .init(image: UIImage(named: "susi"), title: "Сашими", subtitle: "5")
-    ]
-    private let dishList: [DishesCollectionViewCell.ViewModel] = [
-        .init(
-            image: UIImage(named: "susi"),
-            title: "Магура",
-            subtitle: "Тунец",
-            price: "80",
-            weight: "40",
-            spicyImage: nil
-        ),
-        .init(
-            image: UIImage(named: "susi"),
-            title: "Магура",
-            subtitle: "Тунец, соус спайси",
-            price: "100",
-            weight: "50",
-            spicyImage: UIImage(named: "spicy")
-        ),
-        .init(
-            image: UIImage(named: "susi"),
-            title: "Сливочная икура",
-            subtitle: "Сыр сливочный, икра лосося",
-            price: "130",
-            weight: "45",
-            spicyImage: nil
-        ),
-        .init(
-            image: UIImage(named: "susi"),
-            title: "Сливочная икура",
-            subtitle: "Сыр сливочный, икра лосося",
-            price: "130",
-            weight: "45",
-            spicyImage: nil
-        ),
-        .init(
-            image: UIImage(named: "susi"),
-            title: "Магура",
-            subtitle: "Тунец",
-            price: "80",
-            weight: "40",
-            spicyImage: nil
-        ),
-        .init(
-            image: UIImage(named: "susi"),
-            title: "Магура",
-            subtitle: "Тунец, соус спайси",
-            price: "100",
-            weight: "50",
-            spicyImage: UIImage(named: "spicy")
-        ),
-    ]
+    private var productList: [CategoryCellCollectionViewCell.ViewModel] = []
+    private var menuIDs: [String] = []
+    private var dishList: [DishesCollectionViewCell.ViewModel] = []
     
     // MARK: - Override Methods
     
@@ -86,6 +35,8 @@ final class ProductListViewController: UIViewController {
         dishesCollectionView.configureDishList(dishList: dishList)
         
         categoryLabel.text = ""
+        
+        updateCategories()
     }
     
     // MARK: - Private Methods
@@ -147,5 +98,86 @@ extension ProductListViewController: UICollectionViewDelegate {
                 categoryLabel.text = productList[indexPath.item].title
             }
         }
+        
+        updateDishes(menuID: menuIDs[indexPath.item])
+    }
+}
+
+// MARK: - Network
+
+extension ProductListViewController {
+    private func updateCategories() {
+        networkService.loadCategories { [weak self] result in
+            switch result {
+            case let .success(categories):
+                self?.setup(categories: categories)
+            case let .failure(error):
+                self?.handleError(error)
+            }
+        }
+    }
+    
+    private func updateDishes(menuID: String) {
+        networkService.loadDishes(menuID: menuID) { [weak self] result in
+            switch result {
+            case let .success(dishes):
+                self?.setup(dishes: dishes)
+            case let .failure(error):
+                self?.handleError(error)
+            }
+        }
+        
+        setup(dishes: [])
+    }
+    
+    private func setup(categories: [Category]) {
+        productList = categories.map {
+            menuIDs.append($0.menuID)
+            return .init(
+                imageProvider: makeImageProvider(image: $0.image),
+                title: $0.name,
+                subtitle: String($0.subMenuCount)
+            )
+        }
+        
+        categoriesCollectionView.configureCategoryList(productList: productList)
+        categoriesCollectionView.reloadData()
+    }
+    
+    private func setup(dishes: [Dish]) {
+        dishList = dishes.map {
+            .init(
+                imageProvider: makeImageProvider(image: $0.image),
+                title: $0.name,
+                subtitle: $0.content,
+                price: $0.price,
+                weight: $0.weight ?? "",
+                isSpicy: $0.spicy == "Y"
+            )
+        }
+        
+        dishesCollectionView.configureDishList(dishList: dishList)
+        dishesCollectionView.reloadData()
+    }
+    
+    private func makeImageProvider(image: String) -> ImageProviderProtocol? {
+        guard let url = networkService.makeImageURL(image) else {
+            return nil
+        }
+        
+        return ImageProviderUrl(url: url)
+    }
+    
+    private func handleError(_ error: NetworkService.LoadingError) {
+        let message: String
+        switch error {
+        case .wrongData: message = "Ошибка в работе сервиса"
+        case .noData: message = "Проверьте подключение к интернету"
+        }
+        
+        let alert = UIAlertController(title: "Ошибка!", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ок", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
 }

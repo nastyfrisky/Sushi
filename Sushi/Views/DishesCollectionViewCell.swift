@@ -11,11 +11,17 @@ final class DishesCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Properties
     
-    private let imageView = UIImageView()
+    private let imageView = ImageView()
     private let dishName = UILabel()
     private let compositionOfTheDish = UILabel()
     private let infoAboutTheDish = UILabel()
-    private let spicyImage = UIImageView()
+    
+    private let spicyImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "spicy")
+        return imageView
+    }()
+    
     private let view = UIView()
     private let button = UIButton()
     
@@ -52,7 +58,7 @@ final class DishesCollectionViewCell: UICollectionViewCell {
         
         compositionOfTheDish.font = Constants.font13
         compositionOfTheDish.textColor = .lightGray
-        compositionOfTheDish.numberOfLines = 0
+        compositionOfTheDish.numberOfLines = 2
         compositionOfTheDish.textAlignment = .center
         compositionOfTheDish.lineBreakStrategy = .hangulWordPriority
         
@@ -79,8 +85,8 @@ final class DishesCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             compositionOfTheDish.topAnchor.constraint(equalTo: dishName.bottomAnchor, constant: 5),
-            compositionOfTheDish.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            compositionOfTheDish.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            compositionOfTheDish.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            compositionOfTheDish.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5)
         ])
         
         NSLayoutConstraint.activate([
@@ -121,19 +127,19 @@ final class DishesCollectionViewCell: UICollectionViewCell {
 extension DishesCollectionViewCell {
     
     struct ViewModel {
-        let image: UIImage?
+        let imageProvider: ImageProviderProtocol?
         let title: String
         let subtitle: String
         let price: String
         let weight: String
-        let spicyImage: UIImage?
+        let isSpicy: Bool
     }
     
     func configure(viewModel: ViewModel) {
-        imageView.image = viewModel.image
+        imageView.provider = viewModel.imageProvider
         dishName.text = viewModel.title
         compositionOfTheDish.text = viewModel.subtitle
-        spicyImage.image = viewModel.spicyImage
+        spicyImage.isHidden = !viewModel.isSpicy
         
         guard let fontPrice = Constants.fontBold15, let fontWeight = Constants.font13 else { return }
         
