@@ -15,8 +15,20 @@ final class NetworkService {
     
     // MARK: - Private Properties
     
-    private let urlSession = URLSession.shared
+    private let urlSession: URLSessionProtocol
+    private let queue: DispatchQueueProtocol
     private let host = "vkus-sovet.ru"
+    
+    // MARK: - Initializers
+    
+    init(urlSession: URLSessionProtocol, queue: DispatchQueueProtocol) {
+        self.urlSession = urlSession
+        self.queue = queue
+    }
+    
+    convenience init() {
+        self.init(urlSession: URLSession.shared, queue: DispatchQueue.main)
+    }
     
     // MARK: - Public Methods
     
@@ -54,7 +66,7 @@ final class NetworkService {
         request: URLRequest,
         completion: @escaping (Result<[T], LoadingError>) -> Void
     ) {
-        urlSession.dataTask(with: request) { [weak self] data, response, error in
+        urlSession.makeDataTask(with: request) { [weak self] data, response, error in
             guard let data = data else {
                 self?.callCompletion(completion, .failure(.noData))
                 return
@@ -73,7 +85,7 @@ final class NetworkService {
     }
     
     private func callCompletion<T>(_ completion: @escaping (T) -> Void, _ parameter: T) {
-        DispatchQueue.main.async { completion(parameter) }
+        queue.async { completion(parameter) }
     }
     
     private func apiUrl(for method: String) -> URL? {
@@ -90,8 +102,14 @@ final class NetworkService {
 private extension Dictionary {
     func percentEncoded() -> Data? {
         map { key, value in
-            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            let escapedKey = "\(key)".addingPercentEncoding(
+                withAllowedCharacters: .urlQueryAllowed
+            ) ?? ""
+            
+            let escapedValue = "\(value)".addingPercentEncoding(
+                withAllowedCharacters: .urlQueryAllowed
+            ) ?? ""
+            
             return "\(escapedKey)=\(escapedValue)"
         }.joined(separator: "&").data(using: .utf8)
     }

@@ -55,6 +55,9 @@ final class DishesCollectionViewCell: UICollectionViewCell {
     private func setupSubviews() {
         dishName.font = Constants.fontBold15
         dishName.textColor = .white
+        dishName.adjustsFontSizeToFitWidth = true
+        dishName.lineBreakMode = .byClipping
+        dishName.textAlignment = .center
         
         compositionOfTheDish.font = Constants.font13
         compositionOfTheDish.textColor = .lightGray
@@ -80,7 +83,8 @@ final class DishesCollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             dishName.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            dishName.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            dishName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dishName.widthAnchor.constraint(equalTo: widthAnchor, constant: -10)
         ])
         
         NSLayoutConstraint.activate([
@@ -156,7 +160,7 @@ extension DishesCollectionViewCell {
             .font: fontWeight
         ]
         let attributedStringWeight = NSAttributedString(
-            string: "/ " + viewModel.weight + " г.",
+            string: "/ " + viewModel.weight + ".",
             attributes: attributesWeight
         )
         

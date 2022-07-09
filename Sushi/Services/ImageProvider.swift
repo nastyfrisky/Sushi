@@ -18,22 +18,28 @@ final class ImageProviderUrl: ImageProviderProtocol {
     // MARK: - Private Properties
     
     private let url: URL
+    private let mainQueue: DispatchQueueProtocol
+    private let globalQueue: DispatchQueueProtocol
+    
     private var completionBlock: ImageCompletion?
     
     // MARK: - Initializers
     
-    init(url: URL) {
+    init(url: URL, mainQueue: DispatchQueueProtocol, globalQueue: DispatchQueueProtocol) {
         self.url = url
+        self.mainQueue = mainQueue
+        self.globalQueue = globalQueue
+    }
+    
+    convenience init(url: URL) {
+        self.init(url: url, mainQueue: DispatchQueue.main, globalQueue: DispatchQueue.global())
     }
     
     // MARK: - Public Methods
 
     func load(completion: @escaping ImageCompletion) {
         completionBlock = completion
-
-        DispatchQueue.global().async {
-            self.startLoading()
-        }
+        globalQueue.async { self.startLoading() }
     }
     
     // MARK: - Private Methods
@@ -50,6 +56,6 @@ final class ImageProviderUrl: ImageProviderProtocol {
     }
 
     private func callCompletion(with image: UIImage?) {
-        DispatchQueue.main.async { self.completionBlock?(image) }
+        mainQueue.async { self.completionBlock?(image) }
     }
 }

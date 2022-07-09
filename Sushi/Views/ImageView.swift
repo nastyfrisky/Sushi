@@ -15,6 +15,7 @@ final class ImageView: UIImageView {
     }
 
     private func loadImage() {
+        image = nil
         provider?.load { [weak self] image in
             self?.image = image
         }

@@ -22,13 +22,17 @@
 		4D5C62182878B40800DF131E /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C62172878B40800DF131E /* ImageView.swift */; };
 		4D5C621A2878B43D00DF131E /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C62192878B43D00DF131E /* ImageProvider.swift */; };
 		4D5C621C2878B91B00DF131E /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C621B2878B91B00DF131E /* Dish.swift */; };
+		4D5C621F28798E9000DF131E /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C621E28798E9000DF131E /* URLSessionProtocol.swift */; };
+		4D5C6221287990D900DF131E /* DispatchQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C6220287990D900DF131E /* DispatchQueueProtocol.swift */; };
+		4D5C6223287993B100DF131E /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C6222287993B100DF131E /* NetworkServiceTests.swift */; };
+		4D5C6225287993ED00DF131E /* DispatchQueueMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C6224287993ED00DF131E /* DispatchQueueMock.swift */; };
+		4D5C62272879942D00DF131E /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C62262879942D00DF131E /* URLSessionMock.swift */; };
+		4D5C62292879950200DF131E /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5C62282879950200DF131E /* URLSessionDataTaskMock.swift */; };
 		4D81DA76287705B000FB30D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D81DA75287705B000FB30D7 /* AppDelegate.swift */; };
 		4D81DA78287705B000FB30D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D81DA77287705B000FB30D7 /* SceneDelegate.swift */; };
 		4D81DA7A287705B000FB30D7 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D81DA79287705B000FB30D7 /* ProductListViewController.swift */; };
-		4D81DA7D287705B000FB30D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D81DA7B287705B000FB30D7 /* Main.storyboard */; };
 		4D81DA7F287705B100FB30D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D81DA7E287705B100FB30D7 /* Assets.xcassets */; };
 		4D81DA82287705B100FB30D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D81DA80287705B100FB30D7 /* LaunchScreen.storyboard */; };
-		4D81DA8D287705B100FB30D7 /* SushiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D81DA8C287705B100FB30D7 /* SushiTests.swift */; };
 		4D81DA97287705B100FB30D7 /* SushiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D81DA96287705B100FB30D7 /* SushiUITests.swift */; };
 		4D81DA99287705B100FB30D7 /* SushiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D81DA98287705B100FB30D7 /* SushiUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -66,16 +70,20 @@
 		4D5C62172878B40800DF131E /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		4D5C62192878B43D00DF131E /* ImageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		4D5C621B2878B91B00DF131E /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		4D5C621E28798E9000DF131E /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		4D5C6220287990D900DF131E /* DispatchQueueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueProtocol.swift; sourceTree = "<group>"; };
+		4D5C6222287993B100DF131E /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		4D5C6224287993ED00DF131E /* DispatchQueueMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueMock.swift; sourceTree = "<group>"; };
+		4D5C62262879942D00DF131E /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
+		4D5C62282879950200DF131E /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		4D81DA72287705B000FB30D7 /* Sushi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sushi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D81DA75287705B000FB30D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D81DA77287705B000FB30D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4D81DA79287705B000FB30D7 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
-		4D81DA7C287705B000FB30D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D81DA7E287705B100FB30D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D81DA81287705B100FB30D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D81DA83287705B100FB30D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D81DA88287705B100FB30D7 /* SushiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SushiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D81DA8C287705B100FB30D7 /* SushiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiTests.swift; sourceTree = "<group>"; };
 		4D81DA92287705B100FB30D7 /* SushiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SushiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D81DA96287705B100FB30D7 /* SushiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiUITests.swift; sourceTree = "<group>"; };
 		4D81DA98287705B100FB30D7 /* SushiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushiUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -111,6 +119,8 @@
 			children = (
 				4D5C62112878ACA600DF131E /* NetworkService.swift */,
 				4D5C62192878B43D00DF131E /* ImageProvider.swift */,
+				4D5C621E28798E9000DF131E /* URLSessionProtocol.swift */,
+				4D5C6220287990D900DF131E /* DispatchQueueProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -153,7 +163,10 @@
 		4D81DA8B287705B100FB30D7 /* SushiTests */ = {
 			isa = PBXGroup;
 			children = (
-				4D81DA8C287705B100FB30D7 /* SushiTests.swift */,
+				4D5C6222287993B100DF131E /* NetworkServiceTests.swift */,
+				4D5C6224287993ED00DF131E /* DispatchQueueMock.swift */,
+				4D5C62262879942D00DF131E /* URLSessionMock.swift */,
+				4D5C62282879950200DF131E /* URLSessionDataTaskMock.swift */,
 			);
 			path = SushiTests;
 			sourceTree = "<group>";
@@ -188,7 +201,6 @@
 		4D81DAA7287705D500FB30D7 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				4D81DA7B287705B000FB30D7 /* Main.storyboard */,
 				4D81DA80287705B100FB30D7 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -342,7 +354,6 @@
 			files = (
 				4D81DA82287705B100FB30D7 /* LaunchScreen.storyboard in Resources */,
 				4D81DA7F287705B100FB30D7 /* Assets.xcassets in Resources */,
-				4D81DA7D287705B000FB30D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,10 +390,12 @@
 				4D5C62182878B40800DF131E /* ImageView.swift in Sources */,
 				4D5C620A2877535100DF131E /* CategoriesCollectionView.swift in Sources */,
 				4D81DA76287705B000FB30D7 /* AppDelegate.swift in Sources */,
+				4D5C621F28798E9000DF131E /* URLSessionProtocol.swift in Sources */,
 				4D5C62022877126A00DF131E /* TabbarViewController.swift in Sources */,
 				4D81DA78287705B000FB30D7 /* SceneDelegate.swift in Sources */,
 				4D5C62122878ACA600DF131E /* NetworkService.swift in Sources */,
 				4D5C621C2878B91B00DF131E /* Dish.swift in Sources */,
+				4D5C6221287990D900DF131E /* DispatchQueueProtocol.swift in Sources */,
 				4D5C62082877424100DF131E /* HeaderView.swift in Sources */,
 				4D5C62142878ADD800DF131E /* Category.swift in Sources */,
 			);
@@ -392,7 +405,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D81DA8D287705B100FB30D7 /* SushiTests.swift in Sources */,
+				4D5C62272879942D00DF131E /* URLSessionMock.swift in Sources */,
+				4D5C6225287993ED00DF131E /* DispatchQueueMock.swift in Sources */,
+				4D5C6223287993B100DF131E /* NetworkServiceTests.swift in Sources */,
+				4D5C62292879950200DF131E /* URLSessionDataTaskMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,14 +437,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4D81DA7B287705B000FB30D7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4D81DA7C287705B000FB30D7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4D81DA80287705B100FB30D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -566,9 +574,9 @@
 				INFOPLIST_FILE = Sushi/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -594,9 +602,9 @@
 				INFOPLIST_FILE = Sushi/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
